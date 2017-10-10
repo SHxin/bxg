@@ -17,13 +17,13 @@
                     <span class="input-group-addon">
                         <i class="fa fa-user"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="用户名">
+                    <input name='tc_name' type="text" class="form-control" placeholder="用户名">
                 </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon">
                         <i class="fa fa-key"></i>
                     </span>
-                    <input type="password" class="form-control" placeholder="密码">
+                    <input name='tc_pass' type="password" class="form-control" placeholder="密码">
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
             </form>
@@ -31,5 +31,45 @@
     </div>
 
     <?php include $_SERVER["DOCUMENT_ROOT"]."/views/public/js.html"?>
+    
+    <script>
+        $(function () {
+          
+          var form = $('form');
+          var ipts = form.find('input');
+          
+          //form表单的提交事件
+          form.submit(function () {
+            
+            //1-表单过滤
+            if(ipts.eq(0).val().trim()=='' || ipts.eq(1).val().trim()==''){
+              alert('不能为空');
+              return  false;
+            }
+            
+            //2-得到用户名密码
+            var data = form.serialize();
+            
+            //3-发送ajax请求
+            $.post('/api/login',data,function (data) {
+              //登陆成功
+              if(data.code == 200){
+                
+                //1-把用户信息存到cookie
+                var str = JSON.stringify(data.result);
+                $.cookie('userinfo',str,{path:"/",expires:365});
+                
+                //2-跳转链接
+                location.href = '/';
+              }
+            });
+  
+            //0-阻止浏览器默认行为
+            return false;
+          });
+        });
+      
+    </script>
+
 </body>
 </html>
