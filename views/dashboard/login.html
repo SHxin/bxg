@@ -57,8 +57,7 @@
                 
                 //1-把用户信息存到cookie
                 var str = JSON.stringify(data.result);
-                $.cookie('userinfo',str,{path:"/",expires:365});
-                
+                $.cookie('userinfo',str,{path:'/',expires:365});
                 //2-跳转链接
                 location.href = '/';
               }
