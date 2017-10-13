@@ -9,6 +9,7 @@ define(['jquery','template','cookie'],function ($,template) {
     if(location.pathname != '/dashboard/login'){
       
       //查看用户是否登录
+      //如果没登录,跳转到登录页面
       if(!$.cookie('PHPSESSID')){
         location.href = '/dashboard/login';
       }
@@ -24,7 +25,7 @@ define(['jquery','template','cookie'],function ($,template) {
       
     }
     
-    //退出按钮的点击事件
+    //头部退出按钮的点击事件
     $('#logout').click(function () {
       $.post('/api/logout',function (data) {
         if(data.code == 200){
@@ -32,6 +33,21 @@ define(['jquery','template','cookie'],function ($,template) {
         }
       });
     });
+    
+    //侧边栏点击父级菜单显示子级菜单
+    $(".navs>ul>li>ul").parent().click(function () {
+      $(this).children('ul').slideToggle(200);
+    });
+    
+    //侧边栏选中的菜单高亮
+    //1-a标签的href属性值和URL地址的路径名一样
+    var activeA = $('.navs ul li a[href="'+ location.pathname +'"]');
+    activeA.addClass('active');
+    //2-如果a是子级菜单,让ul显示
+    //a的爸爸li,li的爸爸ul,ul的兄弟中有a标签的话,就代表这个是子级菜单
+    if(activeA.parent().parent().siblings('a').length > 0){
+      activeA.parent().parent().show();
+    }
     
   });
   
