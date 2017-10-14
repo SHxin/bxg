@@ -9,6 +9,7 @@ require.config({
 		'template': 'artTemplate/template-web',
     'form': 'jquery-form/jquery.form',
 		'bootstrap': 'bootstrap/js/bootstrap.min',
+    'utils': '../static/lib/utils'
 	},
   shim:{
 	  'bootstrap':{
