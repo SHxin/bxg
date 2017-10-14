@@ -1,7 +1,7 @@
 /**
  * Created by sh on 2017/10/14.
  */
-define(['utils','jquery','template','form'],function (utils,$,template) {
+define(['utils','jquery','template','form','datepicker','datepickerCN'],function (utils,$,template) {
   
   var id = utils.geturl('id');
   var data = {};
@@ -33,6 +33,13 @@ define(['utils','jquery','template','form'],function (utils,$,template) {
   function render() {
     var str = template('teacher-manage-tpl',data);
     $('.body.teacher').html(str);
+    
+    //使用日期选择插件
+    $('input[name="tc_join_date"]').datepicker({
+      format: 'yyyy-mm-dd',
+      autoclose: true,
+      language: 'zh-CN'
+    })
   }
   
   //提交数据,发送ajax
