@@ -12,6 +12,7 @@ require.config({
     'utils': '../static/lib/utils',
 		'datepicker': 'bootstrap-datepicker/js/bootstrap-datepicker.min',
 		'datepickerCN': 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+		'nprogress': 'nprogress/nprogress',
 	},
   shim:{
 	  'bootstrap':{

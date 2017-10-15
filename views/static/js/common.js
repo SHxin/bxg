@@ -1,9 +1,15 @@
 /**
  * Created by sh on 2017/10/12.
  */
-define(['jquery','template','cookie'],function ($,template) {
+define(['jquery','template','nprogress','cookie'],function ($,template,NProgress) {
+  
+  //进度条开始
+  NProgress.start();
   
   $(function () {
+  
+    //进度条结束
+    NProgress.done();
     
     //不是login页面,要执行的代码
     if(location.pathname != '/dashboard/login'){
@@ -48,6 +54,16 @@ define(['jquery','template','cookie'],function ($,template) {
     if(activeA.parent().parent().siblings('a').length > 0){
       activeA.parent().parent().show();
     }
+    
+    //全局ajax事件,进度条和动图
+    $(document).ajaxStart(function () {
+      NProgress.start();
+      $('#mask').show();
+    });
+    $(document).ajaxStop(function () {
+      NProgress.done();
+      $('#mask').hide();
+    });
     
   });
   
