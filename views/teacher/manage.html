@@ -33,22 +33,25 @@
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">姓名</label>
                     <div class="col-xs-4">
-                        <input name='tc_name' value='{{teacher.tc_name}}' type="text" class="form-control input-sm" placeholder="讲师名称">
+                        <input name='tc_name' value='{{teacher.tc_name}}' type="text" class="form-control input-sm" placeholder="讲师名称" data-required data-description='name' data-describedby='name-tips'>
                     </div>
+                    <label style='text-align: left' id="name-tips" class="col-xs-3 control-label"></label>
                 </div>
                 {{if id == undefined}}
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">密码</label>
                     <div class="col-xs-4">
-                        <input name='tc_pass' type="password" class="form-control input-sm">
+                        <input name='tc_pass' type="password" class="form-control input-sm" data-required data-description='pass' data-pattern='^[0-9A-Za-z]{6,15}$' data-describedby='pass-tips'>
                     </div>
+                  <label style='text-align: left' id="pass-tips" class="col-xs-3 control-label"></label>
                 </div>
                 {{/if}}
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">入职时间</label>
                     <div class="col-xs-4">
-                        <input name='tc_join_date' value='{{teacher.tc_join_date}}' type="text" class="form-control input-sm">
+                        <input name='tc_join_date' value='{{teacher.tc_join_date}}' type="text" class="form-control input-sm" data-required data-description='jointime' data-describedby='jointime-tips'>
                     </div>
+                  <label style='text-align: left' id="jointime-tips" class="col-xs-3 control-label"></label>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">类型</label>

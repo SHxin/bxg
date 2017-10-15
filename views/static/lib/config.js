@@ -13,12 +13,16 @@ require.config({
 		'datepicker': 'bootstrap-datepicker/js/bootstrap-datepicker.min',
 		'datepickerCN': 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
 		'nprogress': 'nprogress/nprogress',
+    'validate': 'jquery-validate/jquery-validate.min'
 	},
   shim:{
 	  'bootstrap':{
 	    deps:['jquery']
     },
     'datepickerCN':{
+      deps:['jquery']
+    },
+    'validate':{
       deps:['jquery']
     }
   }
