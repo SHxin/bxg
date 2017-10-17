@@ -7,9 +7,11 @@ define(['jquery','template'],function ($,template) {
     
     //发送ajax请求
     $.get('/api/course',function (data) {
-      console.log(data);
-      var str = template('course-tpl',data);
-      $('.courses').html(str);
+      if(data.code == 200){
+        console.log(data);
+        var str = template('course-tpl',data);
+        $('.courses').html(str);
+      }
     });
   });
 });
